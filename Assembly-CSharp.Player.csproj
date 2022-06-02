@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9C48CFB6-9778-6C0A-49D8-BDB9992E5470}</ProjectGuid>
+    <ProjectGuid>{46BA12CC-815B-F87A-6C58-DCE45699909A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,9 +56,13 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\ObjectPool.cs" />
     <Compile Include="Assets\Script\CoordinatLabeler.cs" />
-    <Compile Include="Assets\Script\Waypoint.cs" />
+    <Compile Include="Assets\Script\TargetLocator.cs" />
     <Compile Include="Assets\Script\EnemyMover.cs" />
+    <Compile Include="Assets\Script\Waypoint.cs" />
+    <Compile Include="Assets\Script\EnemyHealth.cs" />
+    <Compile Include="Assets\Script\Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -654,27 +658,27 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Timeline.Player.csproj">
-      <Project>{ABCDDDE0-C9A8-7B6D-2B3F-ED9EE41A8584}</Project>
+      <Project>{59C9452E-21E6-6606-833E-2E6C7AF2DDE4}</Project>
       <Name>Unity.Timeline.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
-      <Project>{9DF5C5B9-85F2-5651-1C08-965D549AF21C}</Project>
+      <Project>{2FFC9512-3262-7223-9535-8BA5ED218CE6}</Project>
       <Name>Unity.TextMeshPro.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Player.csproj">
-      <Project>{E52EBEF7-E6DC-BA53-1832-7363F544B8FC}</Project>
+      <Project>{0E563654-DEB9-5EDE-DE91-2ADD341015EE}</Project>
       <Name>Unity.VisualScripting.Flow.Player</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{39D12FE2-D5E6-2FF2-EB7D-EE3BB0F3BE0C}</Project>
+      <Project>{F127140E-C8F1-806E-7CC9-78C91CD29C34}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
-      <Project>{1BE1F6DE-171F-4DC8-EA1F-5FA39DD1F8F4}</Project>
+      <Project>{21C6B1B6-AB74-5D74-6253-5D691B273055}</Project>
       <Name>Unity.VisualScripting.State.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
-      <Project>{FE5E3F48-9DE5-25F0-7211-1FBDF8625D9E}</Project>
+      <Project>{E88AC714-4A41-D30C-39B0-99E880733262}</Project>
       <Name>Unity.VisualScripting.Core.Player</Name>
     </ProjectReference>
   </ItemGroup>

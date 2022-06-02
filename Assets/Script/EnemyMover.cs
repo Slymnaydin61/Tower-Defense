@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] float delta;
-    [SerializeField] List<Waypoint> path=new List<Waypoint>();
-    void Start()
+    
+    List<Waypoint> path=new List<Waypoint>();
+    void OnEnable()
     {
         //StartCoroutine(PrintWaypointName());
-        StartCoroutine(FollowPath());
-       //StartCoroutine(FollowPathSmooth());
+        //StartCoroutine(FollowPath());
+        FindPath();
+        ReturnToStar();
+        StartCoroutine(FollowPathSmooth());
         
+    }
+    void ReturnToStar()
+    {
+        transform.position = path[0].transform.position;
     }
 
     IEnumerator  PrintWaypointName()
@@ -32,13 +38,30 @@ public class EnemyMover : MonoBehaviour
     }
     IEnumerator FollowPathSmooth()
     {
+        
         foreach (Waypoint waypoint in path)
         {
-            float xposition =  Mathf.Lerp(transform.position.x, waypoint.transform.position.x,delta);
-            float yposition = Mathf.Lerp(transform.position.y, waypoint.transform.position.y, delta);
-            float zposition = Mathf.Lerp(transform.position.z, waypoint.transform.position.z, delta);
-            transform.position = new Vector3(xposition, yposition, zposition);
-            yield return new WaitForSeconds(5f);
+           Vector3 startPosition = transform.position;
+           Vector3 endPosition = waypoint.transform.position;
+            float delta=0f;
+            transform.LookAt(endPosition);
+            while (delta<1f)
+            {
+                delta+=Time.deltaTime;
+                transform.position = Vector3.Lerp(startPosition, endPosition, delta);
+                yield return new WaitForEndOfFrame();
+            }
+           
+        }   
+        gameObject.SetActive(false);
+    }
+    void FindPath()
+    {
+        path.Clear();
+        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
+        foreach (GameObject waypoint in waypoints )
+        {
+            path.Add(waypoint.GetComponent<Waypoint>());
         }
     }
 
