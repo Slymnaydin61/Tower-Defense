@@ -4,38 +4,26 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
+    Bank bank;
+    [SerializeField] int goldPenalty=25;
     
     List<Waypoint> path=new List<Waypoint>();
     void OnEnable()
     {
-        //StartCoroutine(PrintWaypointName());
-        //StartCoroutine(FollowPath());
         FindPath();
         ReturnToStar();
         StartCoroutine(FollowPathSmooth());
         
+    }
+    void Start()
+    {
+        bank=FindObjectOfType<Bank>();
     }
     void ReturnToStar()
     {
         transform.position = path[0].transform.position;
     }
 
-    IEnumerator  PrintWaypointName()
-    {
-      foreach(Waypoint waypoint in path)
-        {
-            Debug.Log(waypoint.name);
-            yield return new WaitForSeconds(1f);
-        }
-    }
-    IEnumerator FollowPath()
-    {
-        foreach(Waypoint waypoint in path)
-        {
-            transform.position=waypoint.transform.position;
-            yield return new WaitForSeconds(1f);
-        }
-    }
     IEnumerator FollowPathSmooth()
     {
         
@@ -52,7 +40,8 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
            
-        }   
+        }
+        bank.Withdraw(goldPenalty);
         gameObject.SetActive(false);
     }
     void FindPath()

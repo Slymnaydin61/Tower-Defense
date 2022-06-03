@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int enemyHitPoint=5;
+    Bank bank;
+    [SerializeField] int goldReward = 25;
+    [SerializeField] int maxHitpoints=5;
+    [SerializeField] int difficultiyRamp=1;
+
+    int enemyHitPoint;
+    void OnEnable()
+    {
+        enemyHitPoint = maxHitpoints;
+    }
     void Start()
     {
-        
+        bank =FindObjectOfType<Bank>();
     }
     void Update()
     {
@@ -22,7 +31,8 @@ public class EnemyHealth : MonoBehaviour
         if(enemyHitPoint < 1)
         {
             gameObject.SetActive(false);
-            enemyHitPoint = 5;
+            maxHitpoints += difficultiyRamp;
+            bank.Deposit(goldReward);
         }
     }
 }

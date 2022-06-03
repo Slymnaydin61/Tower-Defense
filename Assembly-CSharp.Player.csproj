@@ -58,11 +58,13 @@
   <ItemGroup>
     <Compile Include="Assets\Script\ObjectPool.cs" />
     <Compile Include="Assets\Script\CoordinatLabeler.cs" />
+    <Compile Include="Assets\Script\EnemyHealth.cs" />
     <Compile Include="Assets\Script\TargetLocator.cs" />
     <Compile Include="Assets\Script\EnemyMover.cs" />
-    <Compile Include="Assets\Script\Waypoint.cs" />
-    <Compile Include="Assets\Script\EnemyHealth.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
+    <Compile Include="Assets\Script\Waypoint.cs" />
+    <Compile Include="Assets\Script\Bank.cs" />
+    <Compile Include="Assets\Script\Tower.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
